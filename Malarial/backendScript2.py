@@ -6,7 +6,6 @@ warnings.filterwarnings("ignore")
 
 base_path = "/var/www/nandishvasant_dev/"
 img_path = base_path + "Malarial/images/" 
-img_path2= "/home/deepesh/Projects/Gaurangji/nandishvasant_express/backend/Malarial/images/"
 EC2_URL = "65.0.238.67:9000/images/"
 
 
@@ -26,7 +25,7 @@ def getSize(img):
     thresh1=120
     thresh2=255
 
-    im = cv2.imread(img_path2+img,0)
+    im = cv2.imread(img_path+img,0)
     im = cv2.resize(im,(600,600))
     im = 255-im
     
@@ -78,7 +77,7 @@ def getSize(img):
 
     # print(json.dumps(finaldata, indent = 4))
 
-os.chdir(img_path2)
+os.chdir(img_path)
 
 img = sys.argv[1]
 
