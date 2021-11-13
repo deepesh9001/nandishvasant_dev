@@ -9,8 +9,8 @@ import warnings
 warnings.filterwarnings("ignore")
 startTime = datetime.now()
 
-img_path = "/home/deepesh/Projects/Gaurangji/nandishvasant_express/backend/Malarial/images/"
-base_path = "/home/deepesh/Projects/Gaurangji/nandishvasant_express/backend/Malarial/"
+img_path = "/var/www/nandishvasant_dev/Malarial/images/"
+base_path = "/var/www/nandishvasant_dev/Malarial/"
 EC2_URL = "65.0.238.67:9000/images/"
 
 def runScript(img) :
