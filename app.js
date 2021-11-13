@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const {exec} = require('child_process')
+const fs = require('fs')
 
 const uploadImage = require('./middlewares/uploadImage')
 
@@ -47,6 +48,31 @@ app.post('/api/maleria', uploadImage.single('maleria'), function(req, res) {
       })
   }
 });
+
+
+
+app.get('/images/:img', function (req, res) {
+  const pathToImg = __dirname + '/Malarial/images/'+ req.params.img
+  console.log(pathToImg)
+  try{
+      if(!fs.existsSync(pathToImg)) return res.send({
+          success: false,
+          status: 404,
+          message: "File not found",
+          response: "Invalid path to file or file does not exist"
+      })
+
+      return res.sendFile(pathToImg)
+  } catch (err) {
+    console.log(err)
+      return res.send({
+          success: false,
+          status: 500,
+          message: "Internal server error",
+          response: null
+      })
+  }
+},)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
